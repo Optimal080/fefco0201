@@ -1,0 +1,285 @@
+<!--Created message; eliminated alert; added flute-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quote FEFCO 0201 Brown</title>
+</head>
+<body>
+  <b>Beta</b> <br> <br>
+  Unit of measurement:
+  <select id="Unit">
+    <option value="milimeter">milimeter</option>
+    <option value="centimeter">centimeter</option>
+    <option value="inches">inches</option>
+    <option value="foot">foot</option>
+  </select> <br> <br>
+  
+    Dimension:
+    <select id="Dimension">
+    <option value="ID">ID</option>
+    <option value="OD">OD</option>
+  </select> <br> <br>
+
+    Flute:
+    <select id="Flute">
+      <option value="B">B - Narrow</option>
+      <option value="E">E - Micro</option>
+    </select> <br> <br>
+
+  Ply:
+  <select id="Ply">
+    <option value="three">3</option>
+    <option value="five">5</option>
+    <option value="seven">7</option>
+    <option value="nine">9</option>
+  </select> <br> <br>
+
+  Length:
+  <input type="number" id="num1" placeholder=""> <br> <br>
+  Width: 
+  <input type="number" id="num2" placeholder=""> <br><br>
+  Height:
+  <input type="number" id="num3" placeholder=""> <br><br>
+  
+  Material: All the layers are made from Natural Shade (Brown) Containerboard Paper. <br> <br>
+
+
+  Layer 1 GSM:
+  <input type="number" id="GSM1" placeholder="" value="0"> <br>
+  Layer 2 GSM:
+  <input type="number" id="GSM2" placeholder="" value="0"><br>
+  Layer 3 GSM:
+  <input type="number" id="GSM3" placeholder="" value="0"><br>
+  Layer 4 GSM:
+  <input type="number" id="GSM4" placeholder="" value="0"><br>
+  Layer 5 GSM:
+  <input type="number" id="GSM5" placeholder="" value="0"><br>
+  Layer 6 GSM:
+  <input type="number" id="GSM6" placeholder="" value="0"><br>
+  Layer 7 GSM:
+  <input type="number" id="GSM7" placeholder="" value="0"><br>
+  Layer 8 GSM:
+  <input type="number" id="GSM8" placeholder="" value="0"><br>
+  Layer 9 GSM:
+  <input type="number" id="GSM9" placeholder="" value="0"><br>
+
+  <br> <br>
+  
+  BF: 16-18 (fixed) <br> <br>
+
+<p style="color:red;"><span id="Message1"></span></p>
+<p style="color:red;"><span id="Message2"></span></p>
+  <p><b>Selling Price: ₹ <span id="result"></span></b></p>
+  <button onclick="calculateCost()">Get quote</button>
+
+  
+
+  <script>
+    function calculateCost() {
+      Length = parseFloat(document.getElementById("num1").value);
+      Width = parseFloat(document.getElementById("num2").value);
+      Height = parseFloat(document.getElementById("num3").value);
+      
+      Selectedunit = document.getElementById("Unit").value;
+      
+      Selectedply = document.getElementById("Ply").value;
+      
+      Selecteddimension = document.getElementById("Dimension").value;
+     
+      gsm1 = parseFloat(document.getElementById("GSM1").value);
+      gsm2 = parseFloat(document.getElementById("GSM2").value);
+      gsm3 = parseFloat(document.getElementById("GSM3").value);
+      gsm4 = parseFloat(document.getElementById("GSM4").value);
+      gsm5 = parseFloat(document.getElementById("GSM5").value);
+      gsm6 = parseFloat(document.getElementById("GSM6").value);
+      gsm7 = parseFloat(document.getElementById("GSM7").value);
+      gsm8 = parseFloat(document.getElementById("GSM8").value);
+      gsm9 = parseFloat(document.getElementById("GSM9").value);
+
+      if (Selectedply=="three")
+      {
+        IDE=3;
+      }
+      else
+      {
+        if (Selectedply=="five")
+        {IDE=5;}
+        else
+        {
+            if (Selectedply=="seven")
+            {IDE=7;}
+            else
+            {IDE=11;}
+        }
+      }
+
+
+      if (Selecteddimension=="OD")
+      {
+      if (Selectedunit=="centimeter")
+      {Length=10*Length;
+      Width=10*Width;
+      Height=10*Height;
+      }
+      else
+      {
+        if (Selectedunit=="inches")
+        {Length=25.4*Length;
+        Width=25.4*Width;
+        Height=25.4*Height;}
+        else
+        {
+          if (Selectedunit=="foot")
+          {Length=304.8*Length;
+          Width=304.8*Width;
+          Height=304.8*Height;}
+          else
+          {Length=1*Length;
+          Width=1*Width;
+          Height=1*Height;}
+        }
+      }
+    }
+    else
+    {if (Selectedunit=="centimeter")
+      {Length=10*Length+IDE;
+      Width=10*Width+IDE;
+      Height=10*Height+IDE;
+      }
+      else
+      {
+        if (Selectedunit=="inches")
+        {Length=25.4*Length+IDE;
+        Width=25.4*Width+IDE;
+        Height=25.4*Height+IDE;}
+        else
+        {
+          if (Selectedunit=="foot")
+          {Length=304.8*Length+IDE;
+          Width=304.8*Width+IDE;
+          Height=304.8*Height+IDE;}
+          else
+          {Length=1*Length+IDE;
+          Width=1*Width+IDE;
+          Height=1*Height+IDE;}
+        }
+      }
+    }
+
+     
+      if (Selectedply=="three")
+      {
+        Excessflop=6;
+      }
+      else
+      {
+        if (Selectedply=="five")
+        {Excessflop=10;}
+        else
+        {
+            if (Selectedply=="seven")
+            {Excessflop=14;}
+            else
+            {Excessflop=20;}
+        }
+      } 
+     
+      if (Selectedply=="three")
+      {
+        Pinningflop=30;
+      }
+      else
+      {
+        if (Selectedply=="five")
+        {Pinningflop=30;}
+        else
+        {
+            if (Selectedply=="seven")
+            {Pinningflop=35;}
+            else
+            {Pinningflop=40;}
+        }
+      }
+
+
+      A=2*Width+2*Length+Pinningflop;
+      B=Height+Width+Excessflop;
+      
+      Trimming=20;
+
+      Deckel=B+Trimming;
+      Cutting=A+Trimming;
+
+      Areamms=Deckel*Cutting;
+      Areams=Areamms*10**(-6);
+
+      ratio=1.5;
+      Flutearea=ratio*Areams;
+      Nflutearea=Areams;
+
+      l1massg=Nflutearea*gsm1;
+      l2massg=Flutearea*gsm2;
+      l3massg=Nflutearea*gsm3;
+      l4massg=Flutearea*gsm4;
+      l5massg=Nflutearea*gsm5;
+      l6massg=Flutearea*gsm6;
+      l7massg=Nflutearea*gsm7;
+      l8massg=Flutearea*gsm8;
+      l9massg=Nflutearea*gsm9;
+      
+      l1masskg=l1massg*10**(-3);
+      l2masskg=l2massg*10**(-3);
+      l3masskg=l3massg*10**(-3);
+      l4masskg=l4massg*10**(-3);
+      l5masskg=l5massg*10**(-3);
+      l6masskg=l6massg*10**(-3);
+      l7masskg=l7massg*10**(-3);
+      l8masskg=l8massg*10**(-3);
+      l9masskg=l9massg*10**(-3);
+      
+      Costperkg=50;
+
+      vl1=Costperkg*l1masskg;
+      vl2=Costperkg*l2masskg;
+      vl3=Costperkg*l3masskg;
+      vl4=Costperkg*l4masskg;
+      vl5=Costperkg*l5masskg;
+      vl6=Costperkg*l6masskg;
+      vl7=Costperkg*l7masskg;
+      vl8=Costperkg*l8masskg;
+      vl9=Costperkg*l9masskg;
+
+      vb=vl1+vl2+vl3+vl4+vl5+vl6+vl7+vl8+vl9;
+
+      vb10=vb+(vb*10/100);
+
+      if (Width+Length+Pinningflop > 2000) {
+        imessage1="Cutting Exceeded. Given size is not make-able in the 0201 box type. Try other box type.";
+        document.getElementById("Message1").textContent = imessage1;
+
+        return; // This will exit the function early, preventing the rest of the code from running
+    }
+    else
+    {imessage1="";
+    document.getElementById("Message1").textContent = imessage1;
+  }
+
+    if (Deckel > 1320) {
+        imessage2="Deckel Exceeded. Given size is not make-able in the 0201 box type. Try other box type.";
+        document.getElementById("Message2").textContent = imessage2;
+        return; // This will exit the function early, preventing the rest of the code from running
+    }
+    else
+    {imessage2="";
+    document.getElementById("Message2").textContent = imessage2;
+  }
+
+      unroundedcost = vb10;
+      cost = unroundedcost.toFixed(2);
+      document.getElementById("result").textContent = cost;
+
+          }
+  </script>
+</body>
+</html>
